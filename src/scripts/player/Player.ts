@@ -30,8 +30,8 @@ class Player extends Entity {
     app.stage.addChild(this.aimStick);
   }
   animations: Dict<PIXI.Texture<PIXI.Resource>[]>;
-  controlls = { up: 'w', left: 'a', down: 's', right: 'd' };
   bounds: Bounds;
+  controlls = { up: 'w', left: 'a', down: 's', right: 'd', fire: 't' };
   goingUp = (): boolean => window.keys.get(this.controlls.up) || false;
   goingDown = (): boolean => window.keys.get(this.controlls.down) || false;
   goingLeft = (): boolean => window.keys.get(this.controlls.left) || false;

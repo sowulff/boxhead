@@ -35,3 +35,4 @@ loader.load(() => {
     game.setup();
   }
 });
+0;

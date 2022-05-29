@@ -3,6 +3,7 @@ import Player from './player/Player';
 import Wall from './entities/Wall';
 import Zombie from './enemies/Zombie';
 import Matter from 'matter-js';
+import Weapon from './weapons/Weapon';
 
 export default class Game {
   constructor(loader: PIXI.Loader, element: HTMLElement) {
@@ -19,6 +20,7 @@ export default class Game {
   loader: PIXI.Loader;
   physicsEngine = Matter.Engine.create();
   players: Player[] = [];
+  weapons: Weapon[] = [];
   enemies: Zombie[] = [];
   walls: Wall[] = [];
   #width = 640;
@@ -37,7 +39,7 @@ export default class Game {
       )
     );
 
-    this.players[0].draw();
+    this.weapons.push(new Weapon(this.#app, this.players[0]));
 
     for (let index = 0; index < 25; index++) {
       this.walls.push(new Wall(index, this.#app, this.physicsEngine.world));
@@ -64,6 +66,8 @@ export default class Game {
     for (const entity of entities) {
       entity.update(dt, this.players);
     }
+
+    this.weapons[0].fire(dt);
 
     [...entities, ...this.walls].forEach((entity) => {
       entity.draw();
