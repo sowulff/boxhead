@@ -19,6 +19,7 @@ class Player extends Entity {
     this.sprite.width = this.size.width;
     this.sprite.animationSpeed = 0.25;
 
+    this.physics = physicsComposite;
     Matter.Body.setPosition(
       this.body,
       Matter.Vector.create(app.screen.width / 2, app.screen.height / 2)
@@ -43,6 +44,7 @@ class Player extends Entity {
   sprite: PIXI.AnimatedSprite;
   aimStick: PIXI.Graphics;
   hitpoints = 100;
+  physics;
 
   lastx = -1;
 
